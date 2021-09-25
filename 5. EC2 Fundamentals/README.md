@@ -1,0 +1,92 @@
+#Amazon EC2
+- EC2 is infrastructure as a service:
+  - Rent virtual machines (EC2 instances)
+  - Store data on virtual drives (EBS)
+  - Distribute load across machines (ELB)
+  - Scale services using an auto-scaling group (ASG)
+
+## Sizing & configuration
+- Operating systems: Linux, Windows, or Mac OS
+- CPU
+- RAM
+- Storage space:
+  - Network-attached (EBS & EFS)
+  - Hardware (EC2 instance store)
+- Network card: speed, public IP address
+- Firewall rules: <b>security group</b>
+- Bootstrap script (configure at first launch): EC2 User Data
+
+## EC2 User Data
+- Bootstrap our instances using an <b>EC2 User data</b> script
+- <b>Bootstrapping</b> means launching commands when a machine starts
+- The script is only run once at the instance first start
+- EC2 user data is used to automate boot tasks such as:
+  - Install updates
+  - Install software
+  - Download common files from the internet
+  - etc
+- EC2 User Data script runs with the root user
+
+## EC2 Instance Types
+- example: m5.2xlarge
+  - m: instance class
+  - 5: generation (AWS improves them over time)
+  - 2xlarge: size within the instance class
+- General purpose:
+  - Great for diversity of workloads, such as web servers or code repos
+  - Balance between:
+    - Compute
+    - Memory
+    - Networking
+  - t2.micro is a general purpose EC2 instance
+- Compute optimized:
+  - Great for compute-intensive tasks that require high performance processors:
+    - Batch processing workloads
+    - Media transcoding
+    - High performance web servers
+    - High performance ocmputing (HPC)
+    - Machine learning
+    - Dedicated gaming server
+- Memory optimized:
+  - Fast performance for workloads that process large data sets in memory
+  - Used for:
+    - High performance, relational/non-relational databases (in-memory databases)
+    - Distributed web scale cache stores (elasticache etc)
+    - In-memory databases optimised for BI
+    - Applications performing real-time processing of big unstructured data
+- Storage optimized:
+  - Great for storage-intensive tasks that require high, sequential read and write access to large datasets on local storage
+  - Use cases:
+    - High frequency online transaction processing (OLTP) systems
+    - Relational and NoSQL databases
+    - Cache for in-memory databases (Redis etc)
+    - Data warehousing apps
+    - Distributed file systems
+
+## Security Groups
+- Security groups are the fundamental of network security in AWS
+- They control how traffic is allowed into or out of our EC@ instances
+- Security groups only contain <b>allow</b> rules
+- Reference by IP or by security group
+- Security groups act as a 'firewall' on our EC2 instances
+- They regulate:
+  - Access to ports
+  - Authorised IP ranges - IPv4 and IPv6
+  - Control of inbound network
+  - Control of outbound network
+- Can be attached to multiple instances
+- Locked down to a region/VPC combination
+- lives 'outside' the EC2 - if traffic is blocked the EC2 instance won't see it
+- It's good to maintain one separate security group for SSH access
+- If your application is not accessible (timeout), then it's a security group issue
+- If you receive a 'connection refused' error, then it's an application error or it's not launched
+- All inbound traffic is blocked by default
+- All outbound traffic is authorized  by default
+- Ports to know:
+  - 22 = SSH - log into a linux instance
+  - 21 = FTP - upload files
+  - 22 = SFTP - upload files using SSH
+  - 80 = HTTP - access unsecured websites
+  - 443 = HTTPS - access secured websites
+  - 3389 = RDP (Remote desktop protocol) - log into a windows instance
+  - 
