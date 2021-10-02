@@ -47,7 +47,7 @@
   - Shows the service permissions granted to a user and when those services were last accessed
   - Can use this information to revise policies (least privilege principle)
 
-  ## IAM Best practices
+## IAM Best practices
 - Do not use the root account except for AWS account setup
 - One physical user = One AWS user (do not share creds)
 - Assign users to groups and assign permissions to groups
@@ -56,4 +56,3 @@
 - Create and use roles for AWS service permissions
 - Use access keys for programmatic access (using CLI or SDK)
 - Audit permissions of your account with the IAM Credentials Report
-
