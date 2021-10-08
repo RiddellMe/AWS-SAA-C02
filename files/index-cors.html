@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Red's Test Webpage</title>
+<body>
+<h1>Hello World from [index-cors.html]!</h1>
+</body>
+</head>
+
+<div id="toFetch"></div>
+
+<script>
+    const toFetch = document.getElementById("toFetch");
+    fetch('extra-page.html')
+    .then((resp) => {
+        return resp.text();
+    })
+    .then ((html) => {
+        toFetch.innerHTML = html;
+    })
+</script>
+
+</html>

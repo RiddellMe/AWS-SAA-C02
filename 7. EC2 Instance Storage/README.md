@@ -166,4 +166,3 @@
   - EFS has a higher price point than EBS
   - Can leverage EFS-IA for cost savings (infrequent access)
   - EFS is billed for use
-

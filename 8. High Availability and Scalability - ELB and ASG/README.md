@@ -240,4 +240,45 @@
     - Having instances under an ASG means that if they get terminated for whatever reason, the ASG will automatically **create new ones as a replacement**. Extra Safety!
     - ASG can terminate instances marked as unhealthy by an LB (and hence replace them)
 
-## 
+## AUto Scaling Groups - Dynamic Scaling Policies
+- Target Tracking Scaling
+  - Most simple and easy to set-up
+  - Ex: I want the average ASG CPU to stay at around 40%
+- Simple / Step Scaling
+  - When a CloudWatch alarm is triggered (ex: CPU > 70%) then add 2 units
+  - When a CloudWatch alarm is triggered( ex: CPU < 30%) then remove 1
+- Scheduled Actions
+  - Anticipate scaling based on known usage patterns
+  - Ex: Increase the min capacity at 10 at 5pm on Fridays
+- Predictive Scaling
+  - Continuously forecast load and scheduling scaling ahead
+- Good metrics to scale on
+  - CPUUtilization: Average CPU utilization across your instances
+    - RequestCountPerTarget: To make sure the number of requests per EC2 instances is stable
+    - Average network in / out (if your application is network bound)
+    - Any custom metric (that you push using CloudWatch)
+- Scaling Cooldowns
+  - After a scaling activity happens, you are in the cooldown period (default 300 seconds)
+  - During the cooldown period, the ASG will not launch of terminate additional instances (to allow for metrics to stabilize)
+  - Advice: Use a ready-to-use AMI to reduce configuration time in order to be serving requests faster and reduce the cooldown period
+
+## ASG for Solutions Architects
+- ASG Default Termination Policy(simplified):
+  - Find the AZ which has the most number of instances
+  - If there are multiple instances in the AZ to choose from, delete the one with the oldest launch configuration
+- ASG tries to balance the number of instances across AZ by default
+- Lifecycle Hooks:
+  - By default, as soon as an instance is launched in an ASG, it's in service
+  - You have the ability to perform extra steps before the instance goes in service (pending state)
+  - You have the ability to perform some actions before the instance is terminated (terminating state)
+- Launch template vs Launch configuration
+  - Both:
+    - ID of the Amazon Machine Image (AMI), the instance type, a key pair, security groups, and the other parameters that you use to launch EC2 instances (tags, EC2 user-data)
+    - Launch Configuration (legacy):
+      - Must be re-created every time
+    - Launch Template (newer):
+      - Can have multiple versions
+      - Create parameters subsets (partial configuration for re-use and inheritance)
+      - Provision using both On-Demand and Spot instances (or a mix)
+      - Can use T2 unlimited burst feature
+      - **Recommended by AWS going forward**
