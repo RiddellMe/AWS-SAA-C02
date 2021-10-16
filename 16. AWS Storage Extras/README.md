@@ -123,7 +123,7 @@
 - Block storage using iSCSI protocol backed by S3
 - Backed by EBS snapshots which can help restore on-premises volumes
 - **Cached volumes:** low latency access to most recent data
-- **Stored volumes:** entire dataset is on premise, scheduled backups to S3
+- **Stored volumes:** entire dataset is on premises, scheduled backups to S3
 
 ### Tape Gateway
 - Some companies have backup processes using physical tapes
@@ -146,7 +146,7 @@
 - Supports SMB protocol and Windows NTFS
 - Microsoft Active Directory integration, ACLs, user quotas
 - Built on SSD, scale up to 10s of GB/s, millions of IOPS, 100s PB of data
-- Can be accessed from your on-premise infrastructure
+- Can be accessed from your on-premises infrastructure
 - Can be configured to be Multi-AZ (high availability)
 - Data is backed-up daily to S3
 
@@ -159,7 +159,7 @@
 - Seamless integration with S3
   - Can 'read S3' as a file system (through FSx)
   - Can write the output of the computations back to S3 (through FSx)
-- Can be used from on-premise servers
+- Can be used from on-premises servers
 
 ### FSx File System Deployment Options
 - Scratch File System
@@ -196,4 +196,3 @@
 - Storage Gateway: File Gateway, Volume Gateway (cached and stored), Tape Gateway
 - Snowball/Snowmobile: to move large amount of data to the cloud, physically
 - Database: for specific workloads, usually with indexing and querying
-

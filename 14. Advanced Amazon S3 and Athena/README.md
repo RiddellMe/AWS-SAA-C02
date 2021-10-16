@@ -82,7 +82,7 @@
 - Low latency and high throughput performance
 - Supports SSL for data at transit and encryption at rest
 - Low cost compared to IA (by 20%)
-- Use cases: Storing secondary backup copies of on-premise data, or storing data you can recreate
+- Use cases: Storing secondary backup copies of on-premises data, or storing data you can recreate
 
 ### Intelligent Tiering
 - Same low latency and high throughput performance of S3 standard
@@ -95,7 +95,7 @@
 ### Amazon Glacier
 - Low cost object storage meant for archiving/backup
 - Data is retained for the longer term (10s of years)
-- Alternative to on-premise magnetic tape storage
+- Alternative to on-premises magnetic tape storage
 - Average annual durability is 99.999999999%
 - Cost per storage per month ($0.004/GB) + retrieval cost
 - Each item in Glacier is called "Archive" (up to 40TB)
