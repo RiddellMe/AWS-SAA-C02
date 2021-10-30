@@ -244,5 +244,3 @@
   - Record configuration changes
   - Evaluate resources against compliance rules
   - Get timeline of changes and compliance
-
-
