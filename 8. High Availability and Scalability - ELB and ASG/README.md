@@ -113,6 +113,18 @@
 - NLB are used for extreme performance, TCP or UDP traffic
 - Not included in AWS free tier
 
+## Gateway Load Balancer
+- Deploy, scale, and manage a fleet of 3rd party network virtual appliances in AWS
+- Example: Firewalls, Intrusion Detection and Prevention Systems, Deep Packet Inspection Systems, payload manipulation...
+- Operates at Layer 3 (Network Layer) - IP Packets
+- Combines the following functions:
+  - Transparent Network Gateway - single entry/exit for all traffic
+  - Load Balancer - distributes traffic to your virtual appliances
+- Uses the GENEVE protocol on port 6081
+- Target Groups
+  - EC2 instances
+  - IP Addresses - must be private IPs
+
 ## Sticky Sessions (Session Affinity)
 - It is possible to implement stickiness so that the same client is always redirected to the same instance behind a load balancer
 - This works for Classic Load Balancer and Application Load Balancer
